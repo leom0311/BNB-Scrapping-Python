@@ -9,7 +9,7 @@ url = 'https://bscscan.com/txs?p=1'
 import subprocess
 
 n = 0
-with open('transactions.csv', mode='w', newline='') as file:
+with open('transactions.csv', mode='a', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['Transaction Hash', 'Result', 'Method', 'Block', 'Timestamp', 'From', 'To', 'Value', 'Txn Fee'])
     while(True):
@@ -80,7 +80,7 @@ with open('transactions.csv', mode='w', newline='') as file:
                 to_     = "" if to_ is None else to_
                 value       = "" if value is None else value
                 fee     = "" if fee is None else fee
-                writer.writerow([hash.strip(), result.strip(), method.strip(), block.strip(), date.strip(), from_.strip(), to_.strip(), value.strip(), fee.strip()])
+                writer.writerow([hash.encode('utf-8').strip(), result.encode('utf-8').strip(), method.encode('utf-8').strip(), block.encode('utf-8').strip(), date.encode('utf-8').strip(), from_.encode('utf-8').strip(), to_.encode('utf-8').strip(), value.encode('utf-8').strip(), fee.encode('utf-8').strip()])
         else:
             print(f"Failed to retrieve data. Error: {result.stderr}")
         time.sleep(3)
