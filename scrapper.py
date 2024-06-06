@@ -16,7 +16,7 @@ with open('transactions.csv', mode='a', newline='') as file:
         n = n + 1
         print("get data from server: ", n)
         # Run the curl command
-        result = subprocess.run(['curl', '-s', url], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding='utf-8')
+        result = subprocess.run(['curl', '--ssl-no-revoke', url], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding='utf-8')
 
         # Check the result
         if result.returncode == 0:
